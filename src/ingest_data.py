@@ -49,7 +49,7 @@ def load_documents() -> List[Document]:
 print("Loading Documents...")
 documents = load_documents()
 
-print("Initialize embeddings...")
+print("Initialize embedding model...")
 embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 print("Initialize vectorstore...")
