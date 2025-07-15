@@ -44,7 +44,7 @@ class QdrantVectorStorage(VectorStorage):
                     id=doc.id,
                     vector=vec,
                     payload={
-                        "id": doc.metadata.get("id") if "id" in doc.metadata else doc.metadata.get("book") + " " + doc.metadata.get("chapter") + ":" + doc.metadata.get("verse"),
+                        "id": str(doc.metadata.get("id")) if "id" in doc.metadata else doc.metadata.get("book") + " " + str(doc.metadata.get("chapter")) + ":" + str(doc.metadata.get("verse")),
                         "text": doc.text,
                         "source": doc.metadata.get("from")
                     }
