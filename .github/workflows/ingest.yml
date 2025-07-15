@@ -1,0 +1,31 @@
+name: Job to ingest data into cloud vector store
+
+on:
+  workflow_dispatch:  # Run manually from GitHub UI
+  schedule:
+    - cron: '0 0 1 * *'  # Runs at 00:00 UTC on the 1st of every month
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run ingestion job
+      run: |
+        python index_data.py
+      env:
+        QDRANT_API_KEY: ${{ secrets.QDRANT_API_KEY }}
+        QDRANT_HOST: ${{ secrets.QDRANT_HOST }}
