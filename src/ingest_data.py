@@ -54,6 +54,3 @@ embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 print("Initialize vectorstore...")
 vector_store = QdrantVectorStorage(documents=documents, embedding_model=embedding_model).get_vector_store()
-
-# print("Perform similarity search...")
-# print(vector_store.similarity_search("Mother Mary is our intercessor."))
