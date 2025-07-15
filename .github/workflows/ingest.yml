@@ -25,7 +25,7 @@ jobs:
 
     - name: Run ingestion job
       run: |
-        python index_data.py
+        python src/ingest_data.py
       env:
         QDRANT_API_KEY: ${{ secrets.QDRANT_API_KEY }}
         QDRANT_HOST: ${{ secrets.QDRANT_HOST }}
