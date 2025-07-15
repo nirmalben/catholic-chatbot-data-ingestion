@@ -7,7 +7,7 @@ from typing import List
 
 import itertools
 
-parent_path = Path(__file__).resolve().parent.parent.parent.as_posix()
+parent_path = Path(__file__).resolve().parent.parent.as_posix()
 
 def load_bible() -> List[Document]:
     def metadata_func(record: dict, metadata: dict) -> dict:

@@ -1,2 +1,4 @@
 qdrant-client
 sentence-transformers
+jq
+pydantic
