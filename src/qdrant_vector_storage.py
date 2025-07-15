@@ -43,7 +43,11 @@ class QdrantVectorStorage(VectorStorage):
                 PointStruct(
                     id=doc.id,
                     vector=vec,
-                    payload=doc.metadata
+                    payload={
+                        "id": doc.metadata.get("id") if "id" in doc.metadata else doc.metadata("book") + " " + doc.metadata.get("chapter") + ":" + doc.metadata.get("verse"),
+                        "text": doc.text,
+                        "source": doc.metadata.get("from")
+                    }
                 )
                 for doc, vec in zip(batch_docs, embeddings)
             ]
