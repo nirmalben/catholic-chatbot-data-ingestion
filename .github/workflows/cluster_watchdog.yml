@@ -1,0 +1,15 @@
+name: Cluster Watchdog
+
+on:
+  workflow_dispatch: # allows manual run
+  schedule:
+    - cron: "0 12 * * *"
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Call Qdrant Collections API
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" -H "api-key: ${{ secrets.QDRANT_API_KEY }}" ${{ secrets.QDRANT_URL }}/collections | grep 200
