@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Call Qdrant Collections API
         run: |
-          curl -s -o /dev/null -w "%{http_code}" -H "api-key: ${{ secrets.QDRANT_API_KEY }}" ${{ secrets.QDRANT_URL }}/collections | grep 200
+          curl -s -o /dev/null -w "%{http_code}" -H "api-key: ${{ secrets.QDRANT_API_KEY }}" ${{ secrets.QDRANT_HOST }}/collections | grep 200
