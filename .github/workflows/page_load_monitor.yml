@@ -1,0 +1,25 @@
+name: Monitor Page Load Time
+
+on:
+  schedule:
+    - cron: "* * * * *"   # every minute
+  workflow_dispatch:       # allow manual runs
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: |
+          pip install requests playwright
+          playwright install chromium
+      - name: Run monitor
+        env:
+          GRAFANA_OTLP_URL: ${{ secrets.GRAFANA_OTLP_URL }}
+          GRAFANA_API_KEY: ${{ secrets.GRAFANA_API_KEY }}
+        run: python monitor_page_load.py
