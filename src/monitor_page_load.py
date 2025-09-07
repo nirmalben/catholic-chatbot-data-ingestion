@@ -1,7 +1,7 @@
 import time, os, requests
 from playwright.sync_api import sync_playwright
 
-URL = os.environ["GRAFANA_OTLP_HOST"]
+URL = os.environ["GRAFANA_OTLP_URL"]
 API_KEY = os.environ["GRAFANA_OTLP_API_KEY"]
 SITE = "https://cathwalk.app"
 
