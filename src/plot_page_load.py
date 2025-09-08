@@ -8,6 +8,7 @@ with open("metrics.json") as f:
 df = pd.DataFrame(data)
 df["timestamp"] = pd.to_datetime(df["timestamp"])
 
+plt.style.use('dark_background')
 plt.figure(figsize=(10, 4))
 
 for url in df["url"].unique():
