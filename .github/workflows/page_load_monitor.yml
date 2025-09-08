@@ -2,24 +2,37 @@ name: Monitor Page Load Time
 
 on:
   schedule:
-    - cron: "*/15 * * * *"   # every every 15 minutes
+    - cron: "0 0,6,12,18 * * *"   # run twice a day at 00:00 UTC, 06:00 UTC, 12:00 UTC and 18:00 UTC
   workflow_dispatch:       # allow manual runs
 
 jobs:
   monitor:
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v4
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      
       - name: Install deps
         run: |
-          pip install requests playwright
+          pip install requests playwright pandas matplotlib
           playwright install chromium
+      
       - name: Run monitor
-        env:
-          GRAFANA_OTLP_URL: ${{ secrets.GRAFANA_OTLP_URL }}
-          GRAFANA_OTLP_API_KEY: ${{ secrets.GRAFANA_OTLP_API_KEY }}
         run: python src/monitor_page_load.py
+
+      - name: Generate chart
+        run: |
+          python src/generate_chart.py
+
+      - name: Commit and push updated metrics
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add metrics.json metrics.png
+          git commit -m "Update page load chart" || echo "No changes to commit"
+          git push
