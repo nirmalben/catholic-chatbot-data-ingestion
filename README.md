@@ -1,7 +1,7 @@
 ## Catholic Chatbot Data Ingestion
 
 Timed workflows to:
-* Ingest data into a cloud vector store that will be used by catholic chatbot app [![Job to ingest data into cloud vector store](https://github.com/nirmalben/catholic-chatbot-data-ingestion/actions/workflows/ingest.yml/badge.svg?branch=main)](https://github.com/nirmalben/catholic-chatbot-data-ingestion/actions/workflows/ingest.yml)
+* Ingest data into a cloud vector store used by catholic chatbot app [![Job to ingest data into cloud vector store](https://github.com/nirmalben/catholic-chatbot-data-ingestion/actions/workflows/ingest.yml/badge.svg?branch=main)](https://github.com/nirmalben/catholic-chatbot-data-ingestion/actions/workflows/ingest.yml)
 
 * Monitor the vector store cluster [![Cluster Watchdog](https://github.com/nirmalben/catholic-chatbot-data-ingestion/actions/workflows/cluster_watchdog.yml/badge.svg)](https://github.com/nirmalben/catholic-chatbot-data-ingestion/actions/workflows/cluster_watchdog.yml)
 
