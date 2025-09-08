@@ -2,7 +2,7 @@ name: Monitor Page Load Time
 
 on:
   schedule:
-    - cron: "* * * * *"   # every minute
+    - cron: "*/15 * * * *"   # every every 15 minutes
   workflow_dispatch:       # allow manual runs
 
 jobs:
