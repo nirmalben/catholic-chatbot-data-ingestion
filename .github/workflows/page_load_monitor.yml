@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate chart
         run: |
-          python src/generate_chart.py
+          python src/plot_page_load.py
 
       - name: Commit and push updated metrics
         run: |
