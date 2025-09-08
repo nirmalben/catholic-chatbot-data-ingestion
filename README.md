@@ -6,3 +6,5 @@ Timed workflows to:
 * Monitor the vector store cluster [![Cluster Watchdog](https://github.com/nirmalben/catholic-chatbot-data-ingestion/actions/workflows/cluster_watchdog.yml/badge.svg)](https://github.com/nirmalben/catholic-chatbot-data-ingestion/actions/workflows/cluster_watchdog.yml)
 
 The Catholic Chatbot app can be accessed via: https://cathwalk.app
+
+![](generated/page_load_times.png)
