@@ -21,5 +21,5 @@ jobs:
       - name: Run monitor
         env:
           GRAFANA_OTLP_URL: ${{ secrets.GRAFANA_OTLP_URL }}
-          GRAFANA_API_KEY: ${{ secrets.GRAFANA_OTLP_API_KEY }}
+          GRAFANA_OTLP_API_KEY: ${{ secrets.GRAFANA_OTLP_API_KEY }}
         run: python src/monitor_page_load.py
