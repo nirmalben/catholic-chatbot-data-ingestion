@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 SITE = "https://cathwalk.app"
 
 try:
-    with open("metrics.json") as f:
+    with open("generated/page_load_times.json") as f:
         results = json.load(f)
 except FileNotFoundError:
     results = []
@@ -28,7 +28,7 @@ results.append({
     "load_time": load_time
 })
 
-with open("metrics.json", "w") as f:
+with open("generated/page_load_times.json", "w") as f:
     json.dump(results, f, indent=2)
 
 print(f"Page load time: {load_time:.2f} seconds")

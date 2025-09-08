@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import json
 
-with open("metrics.json") as f:
+with open("generated/page_load_times.json") as f:
     data = json.load(f)
 
 df = pd.DataFrame(data)
