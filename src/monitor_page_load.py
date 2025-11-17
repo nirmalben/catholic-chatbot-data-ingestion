@@ -28,6 +28,32 @@ results.append({
     "load_time": load_time
 })
 
+if len(results) > 240:
+    first_240 = results[:240]
+    total = 0.0
+    count = 0
+    for item in first_240:
+        try:
+            val = float(item.get("load_time", 0))
+        except Exception:
+            val = 0.0
+        total += val
+        count += 1
+    avg_load = total / count if count > 0 else 0.0
+
+    # Use the timestamp and url from the original 240th entry
+    timestamp_240 = results[239].get("timestamp")
+    url_240 = results[239].get("url", SITE)
+
+    averaged_entry = {
+        "timestamp": timestamp_240,
+        "url": url_240,
+        "load_time": avg_load
+    }
+
+    # Keep averaged entry followed by any entries after the original 240th
+    results = [averaged_entry] + results[240:]
+
 with open("generated/page_load_times.json", "w") as f:
     json.dump(results, f, indent=2)
 
